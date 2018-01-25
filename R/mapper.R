@@ -166,7 +166,7 @@ mapper <- function(dist_object, filter_values, num_intervals, percent_overlap, n
             level_dist_object <- as.dist(
                 as.matrix(dist_object)[points_in_this_level,points_in_this_level])
             level_max_dist <- max(level_dist_object)
-            level_hclust   <- hclust( level_dist_object, method="single" )
+            level_hclust   <- dbscan(level_dist_object, eps = .3, minPts = 6)
             level_heights  <- level_hclust$height
             
             # cut the cluster tree
